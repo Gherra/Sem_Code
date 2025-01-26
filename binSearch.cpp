@@ -7,7 +7,9 @@ using namespace std;
 
 int binSearch(vector<int> arr, int low, int high, int x) {
     if (high >= low) { // Base case: when the search range is valid
-        int mid = (low + high) / 2; // Find the middle index
+        // int mid = (low + high) / 2; // Find the middle index
+        // Calculate the middle index. Didn't use (l + r) / 2 to avoid integer overflow
+        int mid = low + (high - low) / 2;
         if (arr[mid] == x) { // If the middle element is the target, return its index
             return mid;
         } else if (arr[mid] > x) { // If the target is smaller, search the left half
